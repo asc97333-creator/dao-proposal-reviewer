@@ -4,14 +4,15 @@ A distinct GenLayer Intelligent Contract prototype for *advisory AI analysis of 
 
 ## Current status
 
-- **Source prepared**; basic Python syntax checked locally.
-- **Not yet deployed or successfully tested in GenLayer Studio.** Do not claim live on-chain functionality until a verified deployment and transaction receipts exist.
+- **Deployed and tested in the GenLayer Studio sandbox** on 2026-10-20. Deployment, proposal submission, revised AI analysis and organizer decision reached FINALIZED; stored proposal state was verified.
+- Unauthorized decision attempt rolled back with the expected organizer-only error. Initial AI analysis failed consensus; this is recorded explicitly.
+- See [verification evidence](docs/VERIFICATION.md) for exact hashes and outstanding tests. GitHub Pages publication and mission submission are still pending.
 - Site (`index.html`) is an **interactive off-chain illustration**, not a connected contract client.
 
 ## Contract workflow
 
 1. Any wallet submits a substantive DAO proposal with `submit_proposal(title, description)`.
-2. Anyone triggers `analyze_proposal(proposal_id)` using GenLayer's comparative Equivalence Principle. The result is *advisory*, not a vote.
+2. Anyone triggers `analyze_proposal(proposal_id)` using GenLayer's source-grounded non-comparative Equivalence Principle. The result is *advisory*, not a vote.
 3. Only the deploying organizer wallet calls `record_decision(proposal_id, decision)` with `APPROVED`, `REJECTED`, or `NEEDS_REVISION`.
 4. All users inspect the record using `get_proposal(proposal_id)` and count using `get_proposal_count()`.
 
@@ -32,7 +33,7 @@ A distinct GenLayer Intelligent Contract prototype for *advisory AI analysis of 
 6. From organizer wallet, call `record_decision(id, 'NEEDS_REVISION')` and confirm `FINALIZED` and decision saved.
 7. Test nonexistent ID, invalid decision and repeated review to confirm appropriate errors.
 
-**Do not submit this as live evidence before steps 1–7 have actually succeeded.**
+Completed checks and unrun cases are listed separately in docs/VERIFICATION.md. This is Studio sandbox evidence, not mainnet evidence.
 
 ## Official references
 
