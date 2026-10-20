@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DAO Proposal Reviewer — GenLayer Prototype</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,sans-serif;background:#080c14;color:#edf4ff}
+*{box-sizing:border-box}body{margin:0}main{max-width:1050px;margin:auto;padding:36px 22px 80px}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #223047;padding-bottom:20px}
+.brand{font-size:20px;font-weight:800;letter-spacing:-.7px}.tag{border:1px solid #335476;border-radius:100px;padding:7px 12px;font-size:12px;color:#9fd7ed}
+.hero{padding:75px 0 48px}h1{font-size:clamp(44px,8vw,82px);letter-spacing:-4px;line-height:1.05;margin:0 0 20px}
+h1 span{color:#64ddcf}.lead{color:#9db0c5;font-size:18px;line-height:1.6;max-width:670px}
+.notice{background:#182b36;border:1px solid #2d6675;border-radius:13px;padding:15px 19px;color:#bae3e2;font-size:14px;margin:26px 0}
+section{margin:45px 0}h2{font-size:22px}p,li{line-height:1.65;color:#aab9ca}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:#111a29;border:1px solid #27354c;border-radius:18px;padding:26px}
+label{display:block;margin:17px 0 8px;color:#c5d4e2;font-size:14px;font-weight:650}
+input,textarea{width:100%;background:#0c1321;color:#f6fbff;border:1px solid #40516b;border-radius:9px;padding:13px;font:inherit}
+textarea{min-height:145px;resize:vertical}button{background:#66d9cf;border:0;border-radius:9px;padding:13px 17px;font:inherit;font-weight:800;color:#05252b;cursor:pointer;margin-top:18px}
+button:hover{background:#93eee5}.muted{color:#91a6b9;font-size:13px}.result{white-space:pre-wrap;line-height:1.7;color:#bbf4e7}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step{background:#101827;border:1px solid #23334c;padding:22px;border-radius:15px}
+.step b{color:#75e6db;font-size:22px}a{color:#91e8e6}footer{border-top:1px solid #223047;padding-top:22px;color:#93a5b9;font-size:13px}
+@media(max-width:740px){.grid,.steps{grid-template-columns:1fr}.hero{padding-top:55px}h1{letter-spacing:-2px}}
+</style></head>
+<body><main>
+<header><div class="brand">DAO<span style="color:#64ddcf">/</span>REVIEW</div><span class="tag">GENLAYER PROTOTYPE</span></header>
+<div class="hero"><h1>Better proposals.<br><span>Clearer decisions.</span></h1><div class="lead">A GenLayer Intelligent Contract prototype that prepares advisory AI reviews of DAO proposals and records organizer decisions separately.</div></div>
+<div class="notice"><strong>Prototype disclosure:</strong> This page is an offline interactive demonstration. It is not connected to a deployed GenLayer contract. AI consensus analysis and blockchain transactions occur only when the contract is actually deployed and called in GenLayer Studio.</div>
+<section class="grid">
+<div class="panel"><h2>Try the proposal workflow</h2><label for="title">Proposal title</label><input id="title" maxlength="100" value="Community Contributor Grants">
+<label for="body">Proposal details</label><textarea id="body">Allocate a quarterly grants budget to reward open-source community contributors. Applicants must describe milestones, deliverables and expected community impact. Funding and timelines require organizer review.</textarea>
+<button id="analyze">Create local preview</button><p class="muted">Local preview only · No wallet connection · No AI call</p></div>
+<div class="panel"><h2>Example review preview</h2><div id="result" class="result">Submit the sample to see the proposed review structure.</div></div>
+</section>
+<section><h2>Contract architecture</h2><div class="steps">
+<div class="step"><b>01</b><h3>Submit</h3><p>Wallet submits a proposal title and detailed description. Proposal state is stored by ID.</p></div>
+<div class="step"><b>02</b><h3>Analyze</h3><p>GenLayer validators compare AI analysis of the submitted proposal under an equivalence rule.</p></div>
+<div class="step"><b>03</b><h3>Attest</h3><p>Deploying organizer records the final decision. AI is advisory and cannot approve proposals itself.</p></div>
+</div></section>
+<footer>Open-source prototype · No token movement · No automated DAO governance · Studio deployment still pending</footer>
+</main>
+<script>
+document.getElementById('analyze').addEventListener('click',()=>{
+const title=document.getElementById('title').value.trim(),body=document.getElementById('body').value.trim(),out=document.getElementById('result');
+if(title.length<5||body.length<40){out.textContent='Please enter a title (5+ characters) and description (40+ characters).';return;}
+out.textContent='TITLE: '+title+'\nSTATUS: LOCAL_PREVIEW_ONLY\n\nSUMMARY: '+body.slice(0,180)+(body.length>180?'…':'')+'\n\nBENEFIT: Requires a human evaluation of the proposal benefits.\nRISK: Requires a human evaluation of unintended consequences.\nMISSING: Check measurable outcomes, timeline and budget details.\n\nFINAL DECISION: NOT RECORDED';
+});
+</script></body></html>
